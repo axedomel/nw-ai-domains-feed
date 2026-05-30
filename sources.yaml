@@ -5,7 +5,7 @@
 
 feed:
   # threat.source wpisany do każdego wiersza (bump przy większych zmianach)
-  threat_source: nw-llm-v4.0
+  threat_source: nw-llm-v1.0
   # plik wyjściowy (format F.07: host,threat.category,threat.desc,threat.source ; bez nagłówka)
   output: feed/F.07_llm_providers.csv
   # role hostów, które trafiają do feedu. Usuń 'web' jeśli nie chcesz
