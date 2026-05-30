@@ -1,15 +1,19 @@
 # =====================================================================
 #  NW AI Domains Feed — konfiguracja
 #  Edytujesz TYLKO ten plik, żeby dodać/usunąć źródła i sterować outputem.
+#
+#  Kategorie threat.category zgodne z T1_AR_LLM:
+#    llm-provider   — interfejsy chatowe / konsumenckie (chat.openai.com, claude.ai...)
+#    llm-enterprise — endpointy API/programmatyczne (api.openai.com, api.anthropic.com...)
+#    llm-coding     — asystenci kodu (Copilot, Cursor, Tabnine, Codeium)
+#    llm-malicious  — rogue/jailbreak modele — TYLKO manual w overrides/manual_add.csv
 # =====================================================================
 
 feed:
-  # threat.source wpisany do każdego wiersza (bump przy większych zmianach)
   threat_source: nw-llm-v1.0
-  # plik wyjściowy (format F.07: host,threat.category,threat.desc,threat.source ; bez nagłówka)
   output: feed/F.07_llm_providers.csv
-  # role hostów, które trafiają do feedu. Usuń 'web' jeśli nie chcesz
-  # docs/status/cdn/forum itp. (szum dla detekcji exfil — zostają tylko api+chat).
+  # role hostów trafiających do feedu.
+  # Usuń 'web' jeśli chcesz tylko sygnałowe hosty (api + chat) bez szumu docs/status/cdn.
   include_roles: [api, chat, web, other]
 
 sources:
@@ -18,25 +22,22 @@ sources:
     format: hosts            # linie "0.0.0.0 domena" + nagłówki sekcji "# Provider"
     default_category: llm-provider
 
-  # Dodaj kolejne źródła tutaj. Obsługiwane format: hosts | domains
-  # - name: jakies-inne-repo
+  # Dodaj kolejne źródła tutaj. Format: hosts | domains
+  # - name: moje-zrodlo
   #   url: https://raw.githubusercontent.com/owner/repo/main/domains.txt
-  #   format: domains        # jedna domena na linię, '#' = komentarz
+  #   format: domains
   #   default_category: llm-provider
 
-  # --- OPCJONALNE: strony z TRESCIA generowana przez AI (INNY cel) ---
-  # To NIE sa endpointy providerow/API, tylko serwisy publikujace AI-content.
-  # Wlaczasz tylko jesli chcesz je sledzic osobno - dostaja kategorie
-  # 'ai-content-site', wiec nie mieszaja sie z 'llm-provider'.
+  # --- OPCJONALNE: strony z treścią generowaną przez AI (INNY cel niż detekcja exfil) ---
+  # Dostają kategorię 'ai-content-site' — nie są matchowane przez reguły AR/ESA.
   # - name: stopthetoken-ai-content
   #   url: https://raw.githubusercontent.com/mklemmingen/StopTheToken/main/blocklist.txt
   #   format: domains
   #   default_category: ai-content-site
 
-# Reguły klasyfikacji threat.category na podstawie roli/hosta (pierwsze trafienie wygrywa).
-# Rola jest wykrywana z prefiksu hosta (api., chat., console., docs. ...).
+# Reguły klasyfikacji (pierwsze trafienie wygrywa).
 classify:
-  consumer_hosts:           # zawsze ai-consumer (interfejsy webowe = ryzyko treningu na danych)
+  consumer_hosts:           # llm-provider — konsumenckie interfejsy webowe
     - chat.openai.com
     - chatgpt.com
     - claude.ai
@@ -44,9 +45,14 @@ classify:
     - gemini.google.com
     - copilot.microsoft.com
     - www.perplexity.ai
-  coding_markers:           # jeśli host zawiera któryś z tych członów -> ai-coding
+  coding_markers:           # llm-coding — jeśli host zawiera któryś z tych członów
     - copilot
     - cursor
     - tabnine
     - codeium
     - sourcegraph
+
+# llm-malicious — rogue/jailbreak/uncensored modele:
+# NIE ma publicznej, utrzymywanej listy. Dodawaj ręcznie do overrides/manual_add.csv:
+#   mancer.tech,llm-malicious,mancer uncensored,nw-llm-v1.0
+#   api.goose.ai,llm-malicious,goose ai rogue,nw-llm-v1.0

@@ -77,12 +77,19 @@ def detect_role(host: str) -> str:
 
 def classify(host: str, role: str, provider: str, cfg_classify: dict, default_cat: str) -> str:
     h = host.lower()
+    # 1. Asystenci kodu -> llm-coding  (regula llm coding source upload)
     if any(marker in h for marker in cfg_classify.get("coding_markers", [])):
-        return "ai-coding"
+        return "llm-coding"
+    # 2. Interfejsy chatowe / konsumenckie -> llm-provider
     if h in {c.lower() for c in cfg_classify.get("consumer_hosts", [])}:
-        return "ai-consumer"
+        return "llm-provider"
     if role == "chat":
-        return "ai-consumer"
+        return "llm-provider"
+    # 3. Endpointy API/programmatyczne -> llm-enterprise
+    #    (reguly C2, beaconing, server outbound, LOLBAS matchuja oba: llm-provider + llm-enterprise)
+    if role == "api":
+        return "llm-enterprise"
+    # 4. Pozostale (console, docs, web, other) -> llm-provider
     return default_cat
 
 
