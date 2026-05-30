@@ -129,7 +129,7 @@ jobs:
           git checkout -b "$BRANCH"
           git add feed/
           git commit -m "chore: feed update ${{ steps.diff.outputs.stamp }} (+${{ steps.diff.outputs.added }}/-${{ steps.diff.outputs.removed }})"
-          git push origin "$BRANCH"
+          git push origin "$BRANCH" --force-with-lease
 
           # Sprawdz czy PR na ten branch juz istnieje
           EXISTING=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number // empty')
