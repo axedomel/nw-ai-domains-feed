@@ -1,0 +1,144 @@
+name: Update AI domains feed
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"        # w kazdy poniedzialek 06:00 UTC
+  workflow_dispatch: {}         # przycisk "Run workflow" w zakladce Actions
+
+permissions:
+  contents: write
+  pull-requests: write          # otwarcie PR wymaga tego uprawnienia
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0        # pelna historia - potrzebna do diffow
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install requests pyyaml
+
+      - name: Build feed
+        run: python3 build_feed.py
+
+      - name: Job summary
+        run: cat feed_summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Sanity check
+        id: sanity
+        run: |
+          # Poprzedni feed z main (jesli juz istnieje)
+          PREV_COUNT=0
+          if git show main:feed/F.07_llm_providers.csv 2>/dev/null | wc -l > /tmp/prev_count; then
+            PREV_COUNT=$(cat /tmp/prev_count | tr -d ' ')
+          fi
+          NEW_COUNT=$(wc -l < feed/F.07_llm_providers.csv | tr -d ' ')
+          
+          echo "prev_count=$PREV_COUNT"  >> "$GITHUB_OUTPUT"
+          echo "new_count=$NEW_COUNT"    >> "$GITHUB_OUTPUT"
+
+          # Brak zmian -> koniec pracy
+          if git diff --quiet -- feed/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Brak zmian w feedzie — PR nie jest potrzebny."
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+          # Oblicz delta
+          if [ "$PREV_COUNT" -gt 0 ]; then
+            DELTA=$(( NEW_COUNT - PREV_COUNT ))
+            ABS_DELTA=${DELTA#-}
+            PCT=$(( ABS_DELTA * 100 / PREV_COUNT ))
+            echo "delta=$DELTA pct=$PCT"
+            # Blokuj jesli zmiana > 30% lub usnieto > 50 hostow
+            if [ "$PCT" -gt 30 ]; then
+              echo "::error::SANITY FAIL: zmiana o ${PCT}% (${DELTA} hostow). Sprawdz upstream recznie!"
+              exit 1
+            fi
+            if [ "$DELTA" -lt -50 ]; then
+              echo "::error::SANITY FAIL: usunieto ${ABS_DELTA} hostow naraz. Sprawdz upstream recznie!"
+              exit 1
+            fi
+          fi
+
+      - name: Przygotuj opis PR z diffem domen
+        if: steps.sanity.outputs.changed == 'true'
+        id: diff
+        run: |
+          git diff -- feed/F.07_llm_providers.csv > /tmp/feed.diff
+
+          ADDED=$(grep '^+[^+]' /tmp/feed.diff | grep -v '^+++' | wc -l | tr -d ' ')
+          REMOVED=$(grep '^-[^-]' /tmp/feed.diff | grep -v '^---' | wc -l | tr -d ' ')
+          STAMP=$(date -u +'%Y-%m-%d')
+
+          # Pierwsze 30 dodanych i usunietych do opisu PR
+          ADDED_LIST=$(grep '^+[^+]' /tmp/feed.diff | grep -v '^+++' | head -30 | sed 's/^+/  + /')
+          REMOVED_LIST=$(grep '^-[^-]' /tmp/feed.diff | grep -v '^---' | head -30 | sed 's/^-/  - /')
+
+          {
+            echo "body<<PRBODY"
+            echo "## Feed update ${STAMP}"
+            echo ""
+            echo "| | Liczba |"
+            echo "|---|---|"
+            echo "| Poprzednio | ${{ steps.sanity.outputs.prev_count }} |"
+            echo "| Teraz | ${{ steps.sanity.outputs.new_count }} |"
+            echo "| Dodano | +${ADDED} |"
+            echo "| Usunieto | -${REMOVED} |"
+            echo ""
+            if [ -n "$ADDED_LIST" ]; then
+              echo "### Nowe hosty (pierwsze 30)"
+              echo '```'
+              echo "$ADDED_LIST"
+              echo '```'
+            fi
+            if [ -n "$REMOVED_LIST" ]; then
+              echo "### Usuniete hosty"
+              echo '```'
+              echo "$REMOVED_LIST"
+              echo '```'
+            fi
+            echo ""
+            echo "> Przejrzyj diff, a jesli OK — merguj. Decoder zaktualizuje feed automatycznie."
+            echo "PRBODY"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "stamp=$STAMP"   >> "$GITHUB_OUTPUT"
+          echo "added=$ADDED"   >> "$GITHUB_OUTPUT"
+          echo "removed=$REMOVED" >> "$GITHUB_OUTPUT"
+
+      - name: Push gałąź staging i otwórz PR
+        if: steps.sanity.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="staging/feed-${{ steps.diff.outputs.stamp }}"
+
+          git config user.name  "feed-bot"
+          git config user.email "feed-bot@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add feed/
+          git commit -m "chore: feed update ${{ steps.diff.outputs.stamp }} (+${{ steps.diff.outputs.added }}/-${{ steps.diff.outputs.removed }})"
+          git push origin "$BRANCH"
+
+          # Sprawdz czy PR na ten branch juz istnieje
+          EXISTING=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            echo "PR #${EXISTING} juz istnieje — zaktualizowany przez push."
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "Feed update ${{ steps.diff.outputs.stamp }} (+${{ steps.diff.outputs.added }}/-${{ steps.diff.outputs.removed }})" \
+              --body "${{ steps.diff.outputs.body }}"
+          fi

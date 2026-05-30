@@ -1,0 +1,6 @@
+# Reczne dodatki - maja priorytet nad zrodlami.
+# Format: host,threat.category,threat.desc
+# Przyklady (odkomentuj / dopisz swoje, np. sub-domeny tenantowe Azure):
+# mojafirma.openai.azure.com,llm-provider,azure openai api
+# api.mistral.ai,llm-provider,mistral api
+# generativelanguage.googleapis.com,llm-provider,google gemini api

@@ -1,0 +1,4 @@
+# Hosty do wykluczenia z feedu (po jednym na linie). Obsluga gwiazdki na koncu.
+# Przyklad: zdjac szumowe sub-domeny status/docs jesli ich nie chcesz:
+# status.openai.com
+# docs.*
