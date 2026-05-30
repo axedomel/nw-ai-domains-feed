@@ -1,8 +1,3 @@
-about.meta.com,llm-provider,meta,nw-llm-v4.0
-about.sourcegraph.com,ai-coding,sourcegraph cody,nw-llm-v4.0
-adept.ai,llm-provider,adept ai,nw-llm-v4.0
-ai.facebook.com,llm-provider,meta,nw-llm-v4.0
-ai.google.dev,llm-provider,google gemini,nw-llm-v4.0
 ai.meta.com,llm-provider,meta,nw-llm-v4.0
 ai.replit.com,llm-provider,replit ai,nw-llm-v4.0
 ai21.com,llm-provider,ai21 labs,nw-llm-v4.0
