@@ -1,5 +1,5 @@
 about.meta.com,llm-provider,meta,nw-llm-v1.0
-about.sourcegraph.com,ai-coding,sourcegraph cody,nw-llm-v1.0
+about.sourcegraph.com,llm-coding,sourcegraph cody,nw-llm-v1.0
 adept.ai,llm-provider,adept ai,nw-llm-v1.0
 ai.facebook.com,llm-provider,meta,nw-llm-v1.0
 ai.google.dev,llm-provider,google gemini,nw-llm-v1.0
@@ -12,54 +12,54 @@ andisearch.com,llm-provider,andi search,nw-llm-v1.0
 anthropic.com,llm-provider,anthropic,nw-llm-v1.0
 api-free.deepl.com,llm-provider,deepl write,nw-llm-v1.0
 api-inference.huggingface.co,llm-provider,hugging face inference,nw-llm-v1.0
-api.adept.ai,llm-provider,adept ai api,nw-llm-v1.0
-api.ai21.com,llm-provider,ai21 labs api,nw-llm-v1.0
-api.andisearch.com,llm-provider,andi search api,nw-llm-v1.0
-api.anthropic.com,llm-provider,anthropic api,nw-llm-v1.0
-api.character.ai,llm-provider,character.ai api,nw-llm-v1.0
-api.codeium.com,ai-coding,codeium api,nw-llm-v1.0
-api.cohere.ai,llm-provider,cohere api,nw-llm-v1.0
-api.copy.ai,llm-provider,copy.ai api,nw-llm-v1.0
-api.cursor.sh,ai-coding,cursor ai api,nw-llm-v1.0
-api.deepl.com,llm-provider,deepl write api,nw-llm-v1.0
-api.deepseek.com,llm-provider,deepseek api,nw-llm-v1.0
-api.elevenlabs.io,llm-provider,elevenlabs api,nw-llm-v1.0
-api.fireflies.ai,llm-provider,fireflies.ai api,nw-llm-v1.0
-api.forefront.ai,llm-provider,forefront ai api,nw-llm-v1.0
-api.grammarly.com,llm-provider,grammarly ai api,nw-llm-v1.0
-api.groq.com,llm-provider,groq api,nw-llm-v1.0
-api.huggingface.co,llm-provider,hugging face inference api,nw-llm-v1.0
-api.inflection.ai,llm-provider,pi by inflection ai api,nw-llm-v1.0
-api.jasper.ai,llm-provider,jasper ai api,nw-llm-v1.0
-api.kagi.com,llm-provider,kagi ai api,nw-llm-v1.0
-api.leonardo.ai,llm-provider,leonardo.ai api,nw-llm-v1.0
-api.litellm.ai,llm-provider,open-router & other proxy api,nw-llm-v1.0
-api.mem.ai,llm-provider,mem.ai api,nw-llm-v1.0
-api.mistral.ai,llm-provider,mistral ai api,nw-llm-v1.0
-api.neeva.com,llm-provider,neeva ai api,nw-llm-v1.0
-api.notion.com,llm-provider,notion ai api,nw-llm-v1.0
-api.ollama.com,llm-provider,deepseek api,nw-llm-v1.0
-api.openai.com,llm-provider,openai api,nw-llm-v1.0
-api.openrouter.ai,llm-provider,open-router & other proxy api,nw-llm-v1.0
-api.otter.ai,llm-provider,otter.ai api,nw-llm-v1.0
-api.perplexity.ai,llm-provider,perplexity ai api,nw-llm-v1.0
-api.poe.com,llm-provider,poe by quora api,nw-llm-v1.0
-api.quillbot.com,llm-provider,quillbot api,nw-llm-v1.0
-api.replicate.com,llm-provider,replicate api,nw-llm-v1.0
-api.replit.com,llm-provider,replit ai api,nw-llm-v1.0
-api.runwayml.com,llm-provider,runway ml api,nw-llm-v1.0
-api.scale.ai,llm-provider,scale ai api,nw-llm-v1.0
-api.stability.ai,llm-provider,stability ai api,nw-llm-v1.0
-api.synthesia.io,llm-provider,synthesia api,nw-llm-v1.0
-api.tabnine.com,ai-coding,tabnine api,nw-llm-v1.0
-api.together.ai,llm-provider,together ai api,nw-llm-v1.0
-api.together.xyz,llm-provider,together ai api,nw-llm-v1.0
-api.wordtune.com,llm-provider,wordtune api,nw-llm-v1.0
-api.writesonic.com,llm-provider,writesonic api,nw-llm-v1.0
-api.x.ai,llm-provider,xai api,nw-llm-v1.0
-api.you.com,llm-provider,you.com api,nw-llm-v1.0
+api.adept.ai,llm-enterprise,adept ai api,nw-llm-v1.0
+api.ai21.com,llm-enterprise,ai21 labs api,nw-llm-v1.0
+api.andisearch.com,llm-enterprise,andi search api,nw-llm-v1.0
+api.anthropic.com,llm-enterprise,anthropic api,nw-llm-v1.0
+api.character.ai,llm-enterprise,character.ai api,nw-llm-v1.0
+api.codeium.com,llm-coding,codeium api,nw-llm-v1.0
+api.cohere.ai,llm-enterprise,cohere api,nw-llm-v1.0
+api.copy.ai,llm-enterprise,copy.ai api,nw-llm-v1.0
+api.cursor.sh,llm-coding,cursor ai api,nw-llm-v1.0
+api.deepl.com,llm-enterprise,deepl write api,nw-llm-v1.0
+api.deepseek.com,llm-enterprise,deepseek api,nw-llm-v1.0
+api.elevenlabs.io,llm-enterprise,elevenlabs api,nw-llm-v1.0
+api.fireflies.ai,llm-enterprise,fireflies.ai api,nw-llm-v1.0
+api.forefront.ai,llm-enterprise,forefront ai api,nw-llm-v1.0
+api.grammarly.com,llm-enterprise,grammarly ai api,nw-llm-v1.0
+api.groq.com,llm-enterprise,groq api,nw-llm-v1.0
+api.huggingface.co,llm-enterprise,hugging face inference api,nw-llm-v1.0
+api.inflection.ai,llm-enterprise,pi by inflection ai api,nw-llm-v1.0
+api.jasper.ai,llm-enterprise,jasper ai api,nw-llm-v1.0
+api.kagi.com,llm-enterprise,kagi ai api,nw-llm-v1.0
+api.leonardo.ai,llm-enterprise,leonardo.ai api,nw-llm-v1.0
+api.litellm.ai,llm-enterprise,open-router & other proxy api,nw-llm-v1.0
+api.mem.ai,llm-enterprise,mem.ai api,nw-llm-v1.0
+api.mistral.ai,llm-enterprise,mistral ai api,nw-llm-v1.0
+api.neeva.com,llm-enterprise,neeva ai api,nw-llm-v1.0
+api.notion.com,llm-enterprise,notion ai api,nw-llm-v1.0
+api.ollama.com,llm-enterprise,deepseek api,nw-llm-v1.0
+api.openai.com,llm-enterprise,openai api,nw-llm-v1.0
+api.openrouter.ai,llm-enterprise,open-router & other proxy api,nw-llm-v1.0
+api.otter.ai,llm-enterprise,otter.ai api,nw-llm-v1.0
+api.perplexity.ai,llm-enterprise,perplexity ai api,nw-llm-v1.0
+api.poe.com,llm-enterprise,poe by quora api,nw-llm-v1.0
+api.quillbot.com,llm-enterprise,quillbot api,nw-llm-v1.0
+api.replicate.com,llm-enterprise,replicate api,nw-llm-v1.0
+api.replit.com,llm-enterprise,replit ai api,nw-llm-v1.0
+api.runwayml.com,llm-enterprise,runway ml api,nw-llm-v1.0
+api.scale.ai,llm-enterprise,scale ai api,nw-llm-v1.0
+api.stability.ai,llm-enterprise,stability ai api,nw-llm-v1.0
+api.synthesia.io,llm-enterprise,synthesia api,nw-llm-v1.0
+api.tabnine.com,llm-coding,tabnine api,nw-llm-v1.0
+api.together.ai,llm-enterprise,together ai api,nw-llm-v1.0
+api.together.xyz,llm-enterprise,together ai api,nw-llm-v1.0
+api.wordtune.com,llm-enterprise,wordtune api,nw-llm-v1.0
+api.writesonic.com,llm-enterprise,writesonic api,nw-llm-v1.0
+api.x.ai,llm-enterprise,xai api,nw-llm-v1.0
+api.you.com,llm-enterprise,you.com api,nw-llm-v1.0
 app.ai21.com,llm-provider,ai21 labs,nw-llm-v1.0
-app.claude.ai,ai-consumer,anthropic,nw-llm-v1.0
+app.claude.ai,llm-provider,anthropic,nw-llm-v1.0
 app.cohere.ai,llm-provider,cohere,nw-llm-v1.0
 app.copy.ai,llm-provider,copy.ai,nw-llm-v1.0
 app.grammarly.com,llm-provider,grammarly ai,nw-llm-v1.0
@@ -69,7 +69,7 @@ app.openrouter.ai,llm-provider,open-router & other proxy,nw-llm-v1.0
 app.perplexity.ai,llm-provider,perplexity ai,nw-llm-v1.0
 app.runwayml.com,llm-provider,runway ml,nw-llm-v1.0
 app.synthesia.io,llm-provider,synthesia,nw-llm-v1.0
-app.tabnine.com,ai-coding,tabnine,nw-llm-v1.0
+app.tabnine.com,llm-coding,tabnine,nw-llm-v1.0
 app.writesonic.com,llm-provider,writesonic,nw-llm-v1.0
 auth0.openai.com,llm-provider,openai,nw-llm-v1.0
 automl.googleapis.com,llm-provider,google gemini,nw-llm-v1.0
@@ -92,16 +92,16 @@ cdn.anthropic.com,llm-provider,anthropic,nw-llm-v1.0
 cdn.midjourney.com,llm-provider,midjourney,nw-llm-v1.0
 cdn.openai.com,llm-provider,openai,nw-llm-v1.0
 character.ai,llm-provider,character.ai,nw-llm-v1.0
-chat.deepseek.com,ai-consumer,deepseek chat,nw-llm-v1.0
-chat.forefront.ai,ai-consumer,forefront ai chat,nw-llm-v1.0
-chat.mistral.ai,ai-consumer,mistral ai chat,nw-llm-v1.0
-chat.openai.com,ai-consumer,openai chat,nw-llm-v1.0
+chat.deepseek.com,llm-provider,deepseek chat,nw-llm-v1.0
+chat.forefront.ai,llm-provider,forefront ai chat,nw-llm-v1.0
+chat.mistral.ai,llm-provider,mistral ai chat,nw-llm-v1.0
+chat.openai.com,llm-provider,openai chat,nw-llm-v1.0
 chatsonic.com,llm-provider,writesonic,nw-llm-v1.0
 chrome.jasper.ai,llm-provider,jasper ai,nw-llm-v1.0
-claude.ai,ai-consumer,anthropic,nw-llm-v1.0
+claude.ai,llm-provider,anthropic,nw-llm-v1.0
 clipdrop.co,llm-provider,stability ai,nw-llm-v1.0
 cloud.google.com,llm-provider,google gemini,nw-llm-v1.0
-codeium.com,ai-coding,codeium,nw-llm-v1.0
+codeium.com,llm-coding,codeium,nw-llm-v1.0
 codex.openai.com,llm-provider,codex by openai,nw-llm-v1.0
 cody.ai,llm-provider,sourcegraph cody,nw-llm-v1.0
 cognitiveservices.azure.com,llm-provider,openai,nw-llm-v1.0
@@ -112,15 +112,15 @@ console.cohere.ai,llm-provider,cohere,nw-llm-v1.0
 console.groq.com,llm-provider,groq,nw-llm-v1.0
 console.mistral.ai,llm-provider,mistral ai,nw-llm-v1.0
 cookbook.openai.com,llm-provider,openai,nw-llm-v1.0
-copilot-proxy.githubusercontent.com,ai-coding,microsoft copilot,nw-llm-v1.0
-copilot.azure.com,ai-coding,microsoft copilot,nw-llm-v1.0
-copilot.github.com,ai-coding,microsoft copilot,nw-llm-v1.0
-copilot.microsoft.com,ai-coding,microsoft copilot,nw-llm-v1.0
-copilot.microsoft365.com,ai-coding,microsoft copilot,nw-llm-v1.0
+copilot-proxy.githubusercontent.com,llm-coding,microsoft copilot,nw-llm-v1.0
+copilot.azure.com,llm-coding,microsoft copilot,nw-llm-v1.0
+copilot.github.com,llm-coding,microsoft copilot,nw-llm-v1.0
+copilot.microsoft.com,llm-coding,microsoft copilot,nw-llm-v1.0
+copilot.microsoft365.com,llm-coding,microsoft copilot,nw-llm-v1.0
 copy.ai,llm-provider,copy.ai,nw-llm-v1.0
 creator.poe.com,llm-provider,poe by quora,nw-llm-v1.0
-cursor.com,ai-coding,cursor ai,nw-llm-v1.0
-cursor.sh,ai-coding,cursor ai,nw-llm-v1.0
+cursor.com,llm-coding,cursor ai,nw-llm-v1.0
+cursor.sh,llm-coding,cursor ai,nw-llm-v1.0
 dashboard.cohere.ai,llm-provider,cohere,nw-llm-v1.0
 datasets.huggingface.co,llm-provider,hugging face inference,nw-llm-v1.0
 deepl.com,llm-provider,deepl write,nw-llm-v1.0
@@ -148,9 +148,9 @@ elevenlabs.io,llm-provider,elevenlabs,nw-llm-v1.0
 fireflies.ai,llm-provider,fireflies.ai,nw-llm-v1.0
 forefront.ai,llm-provider,forefront ai,nw-llm-v1.0
 forum.openai.com,llm-provider,openai,nw-llm-v1.0
-gemini.google.com,ai-consumer,google gemini,nw-llm-v1.0
+gemini.google.com,llm-provider,google gemini,nw-llm-v1.0
 generativelanguage.googleapis.com,llm-provider,google gemini,nw-llm-v1.0
-github.copilot.com,ai-coding,microsoft copilot,nw-llm-v1.0
+github.copilot.com,llm-coding,microsoft copilot,nw-llm-v1.0
 grammarly.com,llm-provider,grammarly ai,nw-llm-v1.0
 grok.x.ai,llm-provider,xai,nw-llm-v1.0
 groq.com,llm-provider,groq,nw-llm-v1.0
@@ -207,7 +207,7 @@ runtime-v1-2023-10-31.mbedrock.amazonaws.com,llm-provider,amazon bedrock,nw-llm-
 runwayml.com,llm-provider,runway ml,nw-llm-v1.0
 scale.ai,llm-provider,scale ai,nw-llm-v1.0
 scale.com,llm-provider,scale ai,nw-llm-v1.0
-sourcegraph.com,ai-coding,sourcegraph cody,nw-llm-v1.0
+sourcegraph.com,llm-coding,sourcegraph cody,nw-llm-v1.0
 spaces.huggingface.co,llm-provider,hugging face inference,nw-llm-v1.0
 speech.googleapis.com,llm-provider,google gemini,nw-llm-v1.0
 spellbook.scale.com,llm-provider,scale ai,nw-llm-v1.0
@@ -220,7 +220,7 @@ support.anthropic.com,llm-provider,anthropic,nw-llm-v1.0
 support.perplexity.ai,llm-provider,perplexity ai,nw-llm-v1.0
 sydney.bing.com,llm-provider,microsoft copilot,nw-llm-v1.0
 synthesia.io,llm-provider,synthesia,nw-llm-v1.0
-tabnine.com,ai-coding,tabnine,nw-llm-v1.0
+tabnine.com,llm-coding,tabnine,nw-llm-v1.0
 together.ai,llm-provider,together ai,nw-llm-v1.0
 translate.googleapis.com,llm-provider,google gemini,nw-llm-v1.0
 txt.cohere.ai,llm-provider,cohere,nw-llm-v1.0
@@ -235,7 +235,7 @@ www.anthropic.com,llm-provider,anthropic,nw-llm-v1.0
 www.cohere.ai,llm-provider,cohere,nw-llm-v1.0
 www.meta.ai,llm-provider,meta,nw-llm-v1.0
 www.midjourney.com,llm-provider,midjourney,nw-llm-v1.0
-www.perplexity.ai,ai-consumer,perplexity ai,nw-llm-v1.0
+www.perplexity.ai,llm-provider,perplexity ai,nw-llm-v1.0
 www.phind.com,llm-provider,phind,nw-llm-v1.0
 www.replicate.com,llm-provider,replicate,nw-llm-v1.0
 x.ai,llm-provider,xai,nw-llm-v1.0
